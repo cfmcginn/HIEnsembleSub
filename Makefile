@@ -17,7 +17,7 @@ MKDIR_BIN = mkdir -p $(PWD)/bin
 MKDIR_PDFDIR = mkdir -p $(PWD)/pdfDir
 MKDIR_OUTPUT = mkdir -p $(PWD)/output
 
-all: mkdirBin mkdirOutput mkdirPdfdir bin/createEnsembleMaps.exe bin/hydjetToHFCent.exe bin/quickMedianCheck.exe bin/testID.exe bin/createEnsembleMapHistID.exe bin/compareOldNewMapID.exe bin/testEnsembleMaps.exe
+all: mkdirBin mkdirOutput mkdirPdfdir bin/createEnsembleMaps.exe bin/hydjetToHFCent.exe bin/quickMedianCheck.exe bin/testID.exe bin/createEnsembleMapHistID.exe bin/compareOldNewMapID.exe bin/testEnsembleMaps.exe bin/sumCounts.exe
 
 mkdirBin:
 	$(MKDIR_BIN)
@@ -49,6 +49,9 @@ bin/compareOldNewMapID.exe: src/compareOldNewMapID.C
 
 bin/testEnsembleMaps.exe: src/testEnsembleMaps.C
 	$(CXX) $(CXXFLAGS) -g src/testEnsembleMaps.C $(ROOT) $(FASTJET) $(INCLUDES) -lm -lpthread -lX11 -o bin/testEnsembleMaps.exe
+
+bin/sumCounts.exe: src/sumCounts.C
+	$(CXX) $(CXXFLAGS) -g src/sumCounts.C $(ROOT) $(FASTJET) $(INCLUDES) -lm -lpthread -lX11 -o bin/sumCounts.exe
 
 clean:
 	rm *~ || true
